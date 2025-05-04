@@ -17,19 +17,18 @@ public class Planet extends CelestialBody implements Atmosphere, MagneticField, 
     private boolean hasRings;
     private double rotationSpeed;
     private double rotationAngle;
-    private Orbit.OrbitType orbitType;
-    private double orbitalSpeed;
-    private double orbitalDistance;
 
     public Planet() {
     }
 
 
-    public Planet(String identifier, double radius, double density, double gForce, double atmosphereHeight,
-                  double atmosphereDensity, double atmosphericPressure, AtmosphericElement primaryElement,
-                  double surfaceTemperature, double magneticFieldStrength, int numberOfMoons, boolean hasRings,
-                  double rotationSpeed, double rotationAngle, OrbitType orbitType, double orbitalSpeed,
-                  double orbitalDistance) {
+    public Planet(String identifier, double radius, double density,
+                  double gForce, double atmosphereHeight, double atmosphereDensity,
+                  double atmosphericPressure, AtmosphericElement primaryElement,
+                  double surfaceTemperature, double magneticFieldStrength,
+                  int numberOfMoons, boolean hasRings,
+                  double rotationSpeed, double rotationAngle,
+                  OrbitData orbitData) {
         super(identifier, radius, density);
         this.gForce = gForce;
         this.atmosphereHeight = atmosphereHeight;
@@ -42,9 +41,7 @@ public class Planet extends CelestialBody implements Atmosphere, MagneticField, 
         this.hasRings = hasRings;
         this.rotationSpeed = rotationSpeed;
         this.rotationAngle = rotationAngle;
-        this.orbitType = orbitType;
-        this.orbitalSpeed = orbitalSpeed;
-        this.orbitalDistance = orbitalDistance;
+        super.setOrbitData(orbitData);
     }
 
     @Override
@@ -147,33 +144,6 @@ public class Planet extends CelestialBody implements Atmosphere, MagneticField, 
 
     public void setRotationAngle(double rotationAngle) {
         this.rotationAngle = rotationAngle;
-    }
-
-    @Override
-    public OrbitType getOrbitType() {
-        return orbitType;
-    }
-
-    public void setOrbitType(OrbitType orbitType) {
-        this.orbitType = orbitType;
-    }
-
-    @Override
-    public double getOrbitalSpeed() {
-        return orbitalSpeed;
-    }
-
-    public void setOrbitalSpeed(double orbitalSpeed) {
-        this.orbitalSpeed = orbitalSpeed;
-    }
-
-    @Override
-    public double getOrbitalDistance() {
-        return orbitalDistance;
-    }
-
-    public void setOrbitalDistance(double orbitalDistance) {
-        this.orbitalDistance = orbitalDistance;
     }
 
     @Override

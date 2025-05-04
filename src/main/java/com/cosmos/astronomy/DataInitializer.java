@@ -16,6 +16,13 @@ public class DataInitializer {
     public void init() {
         repository.deleteAll();
         // Земля
+
+        OrbitData earthOrbit = new OrbitData(
+                Orbit.OrbitType.AROUND_SUN,
+                29.78,
+                149.6e6
+        );
+
         Planet earth = new Planet(
                 "Земля",
                 6371,
@@ -31,13 +38,17 @@ public class DataInitializer {
                 false,
                 15,
                 0,
-                Orbit.OrbitType.AROUND_SUN,
-                29.78,
-                149.6e6
+                earthOrbit
         );
         repository.save(earth);
 
         //Солнце
+
+        OrbitData sunOrbit = new OrbitData(
+                Orbit.OrbitType.NONE,
+                0,
+                0
+        );
         Star sun = new Star(
                 "Солнце",
                 696340,
@@ -51,11 +62,15 @@ public class DataInitializer {
                 0.0001,
                 14.18,
                 7.25,
-                Orbit.OrbitType.NONE,
-                0,
-                0
+                sunOrbit
         );
         repository.save(sun);
+
+        OrbitData oumuamuaOrbit = new OrbitData(
+                Orbit.OrbitType.NONE,
+                26.0,
+                37_400_000
+        );
 
         Asteroid oumuamua = new Asteroid(
                 "1I/2017 U1 (Оумуамуа)",
@@ -64,9 +79,7 @@ public class DataInitializer {
                 Asteroid.AsteroidComposition.ICY,
                 "Cigar-shaped",
                 false,
-                Orbit.OrbitType.NONE,
-                26.0,
-                37_400_000
+                oumuamuaOrbit
         );
         repository.save(oumuamua);
     }

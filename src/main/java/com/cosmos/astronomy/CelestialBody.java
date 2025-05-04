@@ -6,6 +6,7 @@ import com.cosmos.astronomy.BodyType;
 
 
 @Entity
+@Table(name = "cosmos_db")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "body_type")
 public abstract class CelestialBody implements Orbit {
@@ -15,6 +16,9 @@ public abstract class CelestialBody implements Orbit {
     @Enumerated(EnumType.STRING)
     @Column(name = "body_type", insertable = false, updatable = false)
     private BodyType bodyType;
+
+    @Embedded
+    private OrbitData orbitData;
 
 
     private String identifier;
@@ -35,6 +39,30 @@ public abstract class CelestialBody implements Orbit {
     // Геттеры и сеттеры
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public Orbit.OrbitType getOrbitType() {
+        return orbitData != null ? orbitData.getOrbitType() : null;
+    }
+
+    @Override
+    public double getOrbitalSpeed() {
+        return orbitData != null ? orbitData.getOrbitalSpeed() : 0;
+    }
+
+    @Override
+    public double getOrbitalDistance() {
+        return orbitData != null ? orbitData.getOrbitalDistance() : 0;
+    }
+
+    // Геттер и сеттер для OrbitData
+    public OrbitData getOrbitData() {
+        return orbitData;
+    }
+
+    public void setOrbitData(OrbitData orbitData) {
+        this.orbitData = orbitData;
     }
 
     public void setId(Long id) {

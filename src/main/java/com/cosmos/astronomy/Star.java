@@ -18,14 +18,16 @@ public class Star extends CelestialBody implements Atmosphere, MagneticField, Ro
     private double magneticFieldStrength;
     private double rotationSpeed;
     private double rotationAngle;
-    private Orbit.OrbitType orbitType;
-    private double orbitalSpeed;
-    private double orbitalDistance;
 
     public Star() {
     }
 
-    public Star(String identifier, double radius, double density, double gForce, double atmosphereHeight, double atmosphereDensity, double atmosphericPressure, AtmosphericElement primaryElement, double surfaceTemperature, double magneticFieldStrength, double rotationSpeed, double rotationAngle, OrbitType orbitType, double orbitalSpeed, double orbitalDistance) {
+    public Star(String identifier, double radius, double density,
+                double gForce, double atmosphereHeight, double atmosphereDensity,
+                double atmosphericPressure, AtmosphericElement primaryElement,
+                double surfaceTemperature, double magneticFieldStrength,
+                double rotationSpeed, double rotationAngle,
+                OrbitData orbitData) {
         super(identifier, radius, density);
         this.gForce = gForce;
         this.atmosphereHeight = atmosphereHeight;
@@ -36,9 +38,7 @@ public class Star extends CelestialBody implements Atmosphere, MagneticField, Ro
         this.magneticFieldStrength = magneticFieldStrength;
         this.rotationSpeed = rotationSpeed;
         this.rotationAngle = rotationAngle;
-        this.orbitType = orbitType;
-        this.orbitalSpeed = orbitalSpeed;
-        this.orbitalDistance = orbitalDistance;
+        super.setOrbitData(orbitData);
     }
 
     @Override
@@ -127,32 +127,6 @@ public class Star extends CelestialBody implements Atmosphere, MagneticField, Ro
         this.rotationAngle = rotationAngle;
     }
 
-    @Override
-    public OrbitType getOrbitType() {
-        return orbitType;
-    }
-
-    public void setOrbitType(OrbitType orbitType) {
-        this.orbitType = orbitType;
-    }
-
-    @Override
-    public double getOrbitalSpeed() {
-        return orbitalSpeed;
-    }
-
-    public void setOrbitalSpeed(double orbitalSpeed) {
-        this.orbitalSpeed = orbitalSpeed;
-    }
-
-    @Override
-    public double getOrbitalDistance() {
-        return orbitalDistance;
-    }
-
-    public void setOrbitalDistance(double orbitalDistance) {
-        this.orbitalDistance = orbitalDistance;
-    }
 
     private static final double STEFAN_BOLTZMANN_CONSTANT = 5.67e-8;
 

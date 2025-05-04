@@ -12,21 +12,16 @@ public class Asteroid extends CelestialBody {
     private AsteroidComposition composition;
     private String shape;
     private boolean isPotentiallyHazardous;
-    private OrbitType orbitType;
-    private double orbitalSpeed;
-    private double orbitalDistance;
 
     public Asteroid() {
     }
 
-    public Asteroid(String identifier, double radius, double density, AsteroidComposition composition, String shape, boolean isPotentiallyHazardous, OrbitType orbitType, double orbitalSpeed, double orbitalDistance) {
+    public Asteroid(String identifier, double radius, double density, AsteroidComposition composition, String shape, boolean isPotentiallyHazardous, OrbitData orbitData) {
         super(identifier, radius, density);
         this.composition = composition;
         this.shape = shape;
         this.isPotentiallyHazardous = isPotentiallyHazardous;
-        this.orbitType = orbitType;
-        this.orbitalSpeed = orbitalSpeed;
-        this.orbitalDistance = orbitalDistance;
+        super.setOrbitData(orbitData);
     }
 
     public AsteroidComposition getComposition() {
@@ -53,32 +48,6 @@ public class Asteroid extends CelestialBody {
         isPotentiallyHazardous = potentiallyHazardous;
     }
 
-    @Override
-    public OrbitType getOrbitType() {
-        return orbitType;
-    }
-
-    public void setOrbitType(OrbitType orbitType) {
-        this.orbitType = orbitType;
-    }
-
-    @Override
-    public double getOrbitalSpeed() {
-        return orbitalSpeed;
-    }
-
-    public void setOrbitalSpeed(double orbitalSpeed) {
-        this.orbitalSpeed = orbitalSpeed;
-    }
-
-    @Override
-    public double getOrbitalDistance() {
-        return orbitalDistance;
-    }
-
-    public void setOrbitalDistance(double orbitalDistance) {
-        this.orbitalDistance = orbitalDistance;
-    }
 
 
     public enum AsteroidComposition {

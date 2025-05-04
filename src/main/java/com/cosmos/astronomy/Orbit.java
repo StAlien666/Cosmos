@@ -2,7 +2,8 @@ package com.cosmos.astronomy;
 
 
 public interface Orbit {
-    public enum OrbitType {
+
+    enum OrbitType {
         AROUND_SUN("Вокруг звезды"),
         AROUND_PLANET("Вокруг планеты"),
         NONE("Нет орбиты");
@@ -18,6 +19,7 @@ public interface Orbit {
             return displayName;
         }
     }
+
     OrbitType getOrbitType();
     double getOrbitalSpeed();
     double getOrbitalDistance();
