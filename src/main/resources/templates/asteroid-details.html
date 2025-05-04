@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${body.identifier}"></title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <style>
+    body {
+        background-image: url('/images/asteroid-bg.jpg');
+        background-size: cover;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 th:text="${body.identifier}"></h1>
+
+  <div class="info-block">
+    <h2>Основные параметры</h2>
+    <p>Радиус: <span th:text="${body.radius}"></span> км</p>
+    <p>Плотность: <span th:text="${body.density}"></span> кг/м³</p>
+    <p>Форма: <span th:text="${body.shape}"></span></p>
+    <p>Состав: <span th:text="${body.composition.displayName}"></span></p>
+  </div>
+
+  <div class="info-block">
+    <h2>Орбита</h2>
+    <p>Тип орбиты: <span th:text="${body.orbitType}"></span></p>
+    <p>Скорость: <span th:text="${body.orbitalSpeed}"></span> км/с</p>
+    <p>Расстояние: <span th:text="${body.orbitalDistance}"></span> км</p>
+  </div>
+
+  <div class="info-block">
+    <h2>Опасность для Земли.</h2>
+    <p th:if="${body.isPotentiallyHazardous}">
+      Есть угроза жизни на Земле
+    </p>
+    <p th:unless="${body.isPotentiallyHazardous}">Нет потенциальной угрозы.</p>
+  </div>
+
+  <a href="/">Вернуться к каталогу</a>
+</div>
+</body>
+</html>

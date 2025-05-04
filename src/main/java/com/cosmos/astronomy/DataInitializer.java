@@ -56,5 +56,18 @@ public class DataInitializer {
                 0
         );
         repository.save(sun);
+
+        Asteroid oumuamua = new Asteroid(
+                "1I/2017 U1 (Оумуамуа)",
+                0.23,
+                2500,
+                Asteroid.AsteroidComposition.ICY,
+                "Cigar-shaped",
+                false,
+                Orbit.OrbitType.NONE,
+                26.0,
+                37_400_000
+        );
+        repository.save(oumuamua);
     }
 }

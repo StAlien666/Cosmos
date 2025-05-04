@@ -82,11 +82,21 @@ public class Asteroid extends CelestialBody {
 
 
     public enum AsteroidComposition {
-        STONY,
-        METALLIC,
-        ICY,
-        CARBONACEOUS,
-        MIXED
+        STONY("Каменный"),
+        METALLIC("Металлический"),
+        ICY("Ледяной"),
+        CARBONACEOUS("Углеродистый"),
+        MIXED("Смешанный");
+
+        private final String displayName;
+
+        AsteroidComposition(String displayName) {
+            this.displayName = displayName;
+        }
+
+        public String getDisplayName() {
+            return displayName;
+        }
     }
 
     public double calculateMass() {
