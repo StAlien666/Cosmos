@@ -1,0 +1,17 @@
+# Идея (IntelliJ)
+.idea/
+*.iml
+
+# Сборка Maven
+target/
+.mvn/
+mvnw
+mvnw.cmd
+
+# Логи
+*.log
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+HELP.md
