@@ -14,10 +14,8 @@ public class DataInitializer {
 
     @PostConstruct
     public void init() {
-        //repository.deleteAll();
+
         // Земля
-
-
         OrbitData marsOrbit = new OrbitData(
                 Orbit.OrbitType.AROUND_SUN,
                 24.07,
@@ -42,7 +40,7 @@ public class DataInitializer {
                 marsOrbit
         );
 
-        //repository.save(mars);
+
 
         OrbitData earthOrbit = new OrbitData(
                 Orbit.OrbitType.AROUND_SUN,
@@ -66,7 +64,77 @@ public class DataInitializer {
                 0,
                 earthOrbit
         );
-        //repository.save(earth);
+
+        OrbitData jupiterOrbit = new OrbitData (
+                Orbit.OrbitType.AROUND_SUN,
+                13.07,
+                778.5e6
+        );
+
+        Planet jupiter = new Planet(
+                "Юпитер",
+                69911,
+                1326,
+                24.79,
+                5000,
+                0.16,
+                200000,
+                Atmosphere.AtmosphericElement.HYDROGEN,
+                -145,
+                0.0042,
+                79,
+                true,
+                45583,
+                3.1,
+                jupiterOrbit
+        );
+
+
+        OrbitData saturnOrbit = new OrbitData(
+                Orbit.OrbitType.AROUND_SUN,
+                9.68,
+                1.429e9
+        );
+        Planet saturn = new Planet(
+                "Сатурн",
+                58232,
+                687,
+                10.44,
+                3000,
+                0.19,
+                140000,
+                Atmosphere.AtmosphericElement.HYDROGEN,
+                -178,
+                0.0022,
+                83,
+                true,
+                35500,
+                26.7,
+                saturnOrbit
+        );
+
+        OrbitData neptuneOrbit = new OrbitData(
+                Orbit.OrbitType.AROUND_SUN,
+                5.43,
+                4.498e9
+        );
+        Planet neptune = new Planet(
+                "Нептун",
+                24622,
+                1638,
+                11.15,
+                2000,
+                1.5,
+                1000000,
+                Atmosphere.AtmosphericElement.HYDROGEN,
+                -214,
+                0.0014,
+                14,
+                true,
+                9670,
+                28.3,
+                neptuneOrbit
+        );
 
         //Солнце
 
@@ -90,7 +158,51 @@ public class DataInitializer {
                 7.25,
                 sunOrbit
         );
-        //repository.save(sun);
+
+
+
+        OrbitData siriusAOrbit = new OrbitData(
+                Orbit.OrbitType.AROUND_SUN,
+                46,
+                8.6e12
+        );
+        Star siriusA = new Star(
+                "Сириус А",
+                1190000,
+                0.57,
+                8870,
+                1200000,
+                2e-5,
+                0.0005,
+                Atmosphere.AtmosphericElement.HYDROGEN,
+                9940,
+                0.0003,
+                16000,
+                36,
+                siriusAOrbit
+        );
+
+
+        OrbitData betelgeuseOrbit = new OrbitData(
+                Orbit.OrbitType.AROUND_SUN,
+                30,
+                4.5e16
+        );
+        Star betelgeuse = new Star(
+                "Бетельгейзе",
+                820000000,
+                1e-6,
+                0.002,
+                1e9,
+                1e-10,
+                1e-7,
+                Atmosphere.AtmosphericElement.HELIUM,
+                3300,
+                0.00001,
+                5000,
+                42,
+                betelgeuseOrbit
+        );
 
         OrbitData oumuamuaOrbit = new OrbitData(
                 Orbit.OrbitType.NONE,
@@ -107,6 +219,18 @@ public class DataInitializer {
                 false,
                 oumuamuaOrbit
         );
+
+
+        //repository.deleteAll();
+        //repository.save(mars);
+        //repository.save(earth);
+        //repository.save(jupiter);
+        //repository.save(saturn);
+        //repository.save(neptune);
+        //repository.save(sun);
+        //repository.save(siriusA);
+        //repository.save(betelgeuse);
         //repository.save(oumuamua);
+
     }
 }
