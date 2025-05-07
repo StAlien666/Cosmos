@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Космический каталог</title>
+    <title>Космический каталог планет</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -37,20 +37,15 @@
     </style>
 </head>
 <body>
-<h1>Каталог небесных тел</h1>
+<h1>Каталог планет</h1>
 
-<nav>
-    <a href="/planets">Планеты</a>
-</nav>
-
-<nav>
-    <a href="/stars">Звезды</a>
-</nav>
-
-<nav>
-    <a href="/asteroids">Астероиды</a>
-</nav>
-
+<div class="card">
+    <h2>Звёзды</h2>
+    <div th:each="star : ${stars}">
+        <a th:href="@{/bodies/star/{id}(id=${star.id})}"
+           th:text="${star.identifier}"></a>
+    </div>
 </div>
+<a href="/">Домой</a>
 </body>
 </html>

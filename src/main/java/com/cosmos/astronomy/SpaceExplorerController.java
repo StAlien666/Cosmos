@@ -22,10 +22,25 @@ public class SpaceExplorerController {
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("planets", repository.findByBodyType(BodyType.PLANET));
-        model.addAttribute("stars", repository.findByBodyType(BodyType.STAR));
-        model.addAttribute("asteroids", repository.findByBodyType(BodyType.ASTEROID));
         return "index";
+    }
+
+    @GetMapping("/stars")
+    public String catalogStars(Model model) {
+        model.addAttribute("stars", repository.findByBodyType(BodyType.STAR));
+        return "catalog-stars";
+    }
+
+    @GetMapping("/asteroids")
+    public String catalogAsteroids(Model model) {
+        model.addAttribute("asteroids", repository.findByBodyType(BodyType.ASTEROID));
+        return "catalog-asteroids";
+    }
+
+    @GetMapping("/planets")
+    public String catalogPlanets(Model model) {
+        model.addAttribute("planets", repository.findByBodyType(BodyType.PLANET));
+        return "catalog-planets";
     }
 
     @GetMapping("/bodies/planet/{id}")

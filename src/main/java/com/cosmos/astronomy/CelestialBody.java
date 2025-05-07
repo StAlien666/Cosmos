@@ -6,7 +6,6 @@ import com.cosmos.astronomy.BodyType;
 
 
 @Entity
-@Table(name = "cosmos_db")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "body_type")
 public abstract class CelestialBody implements Orbit {

@@ -14,7 +14,7 @@ public class DataInitializer {
 
     @PostConstruct
     public void init() {
-        repository.deleteAll();
+        //repository.deleteAll();
         // Земля
 
         OrbitData earthOrbit = new OrbitData(
@@ -40,7 +40,7 @@ public class DataInitializer {
                 0,
                 earthOrbit
         );
-        repository.save(earth);
+        //repository.save(earth);
 
         //Солнце
 
@@ -64,7 +64,7 @@ public class DataInitializer {
                 7.25,
                 sunOrbit
         );
-        repository.save(sun);
+        //repository.save(sun);
 
         OrbitData oumuamuaOrbit = new OrbitData(
                 Orbit.OrbitType.NONE,
@@ -81,6 +81,6 @@ public class DataInitializer {
                 false,
                 oumuamuaOrbit
         );
-        repository.save(oumuamua);
+        //repository.save(oumuamua);
     }
 }

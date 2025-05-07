@@ -2,17 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title th:text="${body.identifier}"></title>
+  <title th:text="${body.identifier} + ' | Космический каталог'"></title>
   <link rel="stylesheet" th:href="@{/css/style.css}">
   <style>
     body {
         background-image: url('/images/asteroid-bg.jpg');
         background-size: cover;
+        position: relative;
+        min-height: 100vh;
+    }
+    .nav-links {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        gap: 15px;
+    }
+    .nav-links a {
+        padding: 8px 15px;
+        border-radius: 5px;
+        background: rgba(255,255,255,0.1);
+        transition: all 0.3s ease;
+    }
+    .nav-links a:hover {
+        background: rgba(170,204,255,0.2);
     }
   </style>
 </head>
 <body>
 <div class="container">
+  <div class="nav-links">
+    <a th:href="@{/asteroids}">← К астероидам</a>
+    <a th:href="@{/}">⌂ На главную</a>
+  </div>
+
   <h1 th:text="${body.identifier}"></h1>
 
   <div class="info-block">
@@ -37,8 +60,10 @@
     </p>
     <p th:unless="${body.isPotentiallyHazardous}">Нет потенциальной угрозы.</p>
   </div>
-
-  <a href="/">Вернуться к каталогу</a>
+  <nav>
+  <a href="/asteroids">К каталогу</a>
+  </nav>
+  <a href="/">Домой</a>
 </div>
 </body>
 </html>

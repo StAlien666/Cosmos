@@ -8,11 +8,35 @@
         body {
             background-image: url('/images/earth-bg.jpg');
             background-size: cover;
+            position: relative;
+            min-height: 100vh;
+        }
+        .nav-links {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        .nav-links a {
+            padding: 8px 15px;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            color: #aaccff;
+            text-decoration: none;
+        }
+        .nav-links a:hover {
+            background: rgba(170,204,255,0.2);
         }
     </style>
 </head>
 <body>
 <div class="container">
+    <div class="nav-links">
+        <a th:href="@{/planets}">← К планетам</a>
+        <a th:href="@{/}">⌂ На главную</a>
+    </div>
     <h1 th:text="${body.identifier}"></h1>
 
     <div class="info-block">
@@ -56,8 +80,10 @@
         </p>
         <p th:unless="${body.lifeType}">Нет обнаруженных форм жизни</p>
     </div>
-
-    <a href="/">Вернуться к каталогу</a>
+    <nav>
+        <a href="/planets">К каталогу</a>
+    </nav>
+    <a href="/">Домой</a>
 </div>
 </body>
 </html>
