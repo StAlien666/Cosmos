@@ -17,12 +17,38 @@ public class DataInitializer {
         //repository.deleteAll();
         // Земля
 
+
+        OrbitData marsOrbit = new OrbitData(
+                Orbit.OrbitType.AROUND_SUN,
+                24.07,
+                227.9e6
+
+        );
+        Planet mars = new Planet(
+                "Марс",
+                3389,
+                3933,
+                3.71,
+                11,
+                0.020,
+                610,
+                Atmosphere.AtmosphericElement.CARBON_DIOXIDE,
+                -63,
+                0.0000001,
+                2,
+                false,
+                868,
+                25.2,
+                marsOrbit
+        );
+
+        //repository.save(mars);
+
         OrbitData earthOrbit = new OrbitData(
                 Orbit.OrbitType.AROUND_SUN,
                 29.78,
                 149.6e6
         );
-
         Planet earth = new Planet(
                 "Земля",
                 6371,
