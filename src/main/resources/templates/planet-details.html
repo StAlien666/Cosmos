@@ -6,37 +6,46 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <style>
         body {
-            background-image: url('/images/earth-bg.jpg');
+            background-image: url('/images/planets-bg/planet-[[${bgNumber}]].jpg');
             background-size: cover;
             position: relative;
             min-height: 100vh;
         }
-        .nav-links {
+
+
+        .planet-nav-links {
             position: absolute;
             top: 20px;
             right: 20px;
             display: flex;
             gap: 15px;
+            z-index: 1000;
         }
-        .nav-links a {
+
+        .planet-nav-links a {
             padding: 8px 15px;
             border-radius: 5px;
             background: rgba(255,255,255,0.1);
             transition: all 0.3s ease;
             color: #aaccff;
             text-decoration: none;
+            backdrop-filter: blur(5px);
         }
-        .nav-links a:hover {
+
+        .planet-nav-links a:hover {
             background: rgba(170,204,255,0.2);
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="nav-links">
+
+    <div class="planet-nav-links">
         <a th:href="@{/planets}">← К планетам</a>
         <a th:href="@{/}">⌂ На главную</a>
     </div>
+
     <h1 th:text="${body.identifier}"></h1>
 
     <div class="info-block">

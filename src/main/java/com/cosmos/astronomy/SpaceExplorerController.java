@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.swing.table.TableColumn;
 import java.util.NoSuchElementException;
+import java.util.Random;
 
 
 @Controller
@@ -48,11 +50,25 @@ public class SpaceExplorerController {
         CelestialBody body = repository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Planet not found"));
 
-        if (!(body instanceof Planet)) {
+        if (!(body instanceof Planet planet)) {
             throw new ClassCastException("Not a Planet");
         }
 
+        int bgNumber;
+
+        switch (planet.getIdentifier()) {
+            case "Марс" -> bgNumber = 11;
+            case "Земля" -> bgNumber = 15;
+            case "Юпитер" -> bgNumber = 13;
+            case "Сатурн" -> bgNumber = 14;
+            case "Нептун" -> bgNumber = 12;
+
+            default -> bgNumber = new Random().nextInt(10) + 1;
+        }
+
         model.addAttribute("body", body);
+        model.addAttribute("bgNumber", bgNumber);
+
         return "planet-details";
     }
 
