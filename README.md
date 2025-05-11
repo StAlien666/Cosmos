@@ -1,1 +1,1 @@
-OOP research
+Main project
